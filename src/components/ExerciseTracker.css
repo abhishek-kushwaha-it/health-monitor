@@ -1,0 +1,505 @@
+.exercise-tracker {
+  width: 100%;
+  padding: 32px 20px;
+  min-height: 100vh;
+  background: var(--gray-50);
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Difficulty Selector */
+.difficulty-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.difficulty-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px;
+  border: 2px solid var(--gray-200);
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 200ms var(--easing);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-600);
+}
+
+.difficulty-btn:hover {
+  border-color: var(--primary);
+  background: var(--gray-50);
+}
+
+.difficulty-btn.active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.difficulty-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.difficulty-label {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+/* Exercises List Layout - Grid Card Layout */
+.exercises-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.exercise-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  height: 100%;
+}
+
+.exercise-item:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.12);
+  transform: translateY(-2px);
+}
+
+.exercise-item.completed {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.exercise-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  flex: 1;
+}
+
+.exercise-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.exercise-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding-top: 8px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.exercise-type-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  font-size: 20px;
+  flex-shrink: 0;
+  border: 2px solid;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.exercise-duration {
+  font-size: 12px;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}
+
+.exercise-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+  text-decoration: none;
+  line-height: 1.3;
+}
+
+.exercise-item.completed .exercise-name {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.exercise-calories {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+  color: #b45309;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cal-label {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.exercise-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.exercise-checkbox:hover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.exercise-checkbox.checked {
+  border-color: #10b981;
+  background: #d1fae5;
+}
+
+/* Analytics Grid */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.analytics-card {
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.analytics-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 10px 28px rgba(59, 130, 246, 0.1);
+  transform: translateY(-4px);
+}
+
+.analytics-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+}
+
+.stat-icon {
+  font-size: 36px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-label {
+  margin: 0 0 6px 0;
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.stat-value {
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: #1f2937;
+  letter-spacing: -0.5px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #0ea5e9);
+  border-radius: 3px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Motivation Card */
+.motivation-card {
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+  border-color: #fbbf24;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.motivation-card:hover {
+  box-shadow: 0 12px 32px rgba(251, 191, 36, 0.15);
+  transform: translateY(-2px);
+}
+
+.motivation-content {
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.motivation-emoji {
+  margin: 0 0 16px 0;
+  font-size: 56px;
+  line-height: 1;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.motivation-content h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #92400e;
+}
+
+.motivation-content p {
+  margin: 0;
+  font-size: 15px;
+  color: #b45309;
+  line-height: 1.6;
+}
+
+/* Day Header */
+.day-header-card {
+  background: linear-gradient(135deg, #f0f9ff 0%, #ecfdf5 100%);
+  border-color: #0ea5e9;
+  padding: 24px;
+}
+
+.day-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.workout-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0369a1;
+}
+
+.workout-date {
+  margin: 0;
+  font-size: 14px;
+  color: #0c4a6e;
+  font-weight: 500;
+}
+
+/* Rest Day Card */
+.rest-day-card {
+  background: linear-gradient(135deg, #f5f3ff 0%, #faf5ff 100%);
+  border-color: #a78bfa;
+  padding: 32px;
+}
+
+.rest-day-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.rest-day-emoji {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1;
+}
+
+.rest-day-content h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #6d28d9;
+}
+
+.rest-day-content p {
+  margin: 0;
+  color: #7c3aed;
+  line-height: 1.6;
+}
+
+.rest-tip {
+  margin: 0 !important;
+  font-size: 14px;
+  color: #a78bfa;
+  font-weight: 600;
+  margin-top: 12px !important;
+}
+
+/* Stat Subtitle */
+.stat-subtitle {
+  margin: 0;
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .exercises-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .analytics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .exercise-tracker {
+    padding: 24px 16px;
+  }
+
+  .exercises-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .analytics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .difficulty-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .exercise-item {
+    padding: 12px;
+  }
+
+  .analytics-stat {
+    padding: 16px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+
+  .motivation-content {
+    padding: 24px 16px;
+  }
+
+  .motivation-emoji {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exercise-tracker {
+    padding: 16px 12px;
+  }
+
+  .exercises-list {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .difficulty-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-item {
+    padding: 12px;
+  }
+
+  .exercise-type-badge {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .exercise-name {
+    font-size: 15px;
+  }
+
+  .exercise-right {
+    flex-wrap: wrap;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  .difficulty-label {
+    font-size: 12px;
+  }
+
+  .motivation-emoji {
+    font-size: 40px;
+  }
+
+  .motivation-content h3 {
+    font-size: 18px;
+  }
+
+  .motivation-content p {
+    font-size: 14px;
+  }
+}

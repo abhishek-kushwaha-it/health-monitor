@@ -1,0 +1,199 @@
+.nutrition-planner {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--gray-50);
+  padding: 32px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nutrition-planner > *:not(:first-child) { margin: 0; }
+.nutrition-planner > div:first-child { margin: 0 -20px 32px -20px; width: calc(100% + 40px); }
+
+/* Form styles */
+.nutrition-planner select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.step-card { padding: 28px; background: linear-gradient(135deg, #f8fafb 0%, #ffffff 100%); }
+.goal-card { padding: 24px; }
+
+/* Macro cards */
+.macro-card {
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.macro-protein {
+  background-color: rgba(100, 116, 255, 0.1);
+  border: 2px solid #6474ff;
+}
+
+.macro-carbs {
+  background-color: rgba(245, 158, 11, 0.1);
+  border: 2px solid #f59e0b;
+}
+
+.macro-fats {
+  background-color: rgba(251, 146, 60, 0.1);
+  border: 2px solid #fb923c;
+}
+
+.macro-card p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.macro-card p:nth-child(1) { margin-bottom: 8px; font-size: 0.95rem; font-weight: 600; }
+.macro-card p:nth-child(2) { font-size: 2.5rem; font-weight: 700; }
+.macro-card p:nth-child(3) { margin-top: 8px; font-size: 0.85rem; }
+
+.macro-protein p:nth-child(2) { color: #6474ff; }
+.macro-carbs p:nth-child(2) { color: #f59e0b; }
+.macro-fats p:nth-child(2) { color: #fb923c; }
+
+/* Results display */
+.tdee-result {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: rgba(16, 185, 129, 0.1);
+  border-radius: 8px;
+  border: 2px solid var(--success);
+}
+
+.tdee-label { margin: 0 0 8px 0; font-size: 0.95rem; color: var(--text-secondary); }
+.tdee-value { margin: 0; font-size: 2.5rem; font-weight: 700; color: var(--success); }
+.tdee-note { margin: 8px 0 0 0; font-size: 0.9rem; color: var(--text-secondary); }
+
+/* Tips section */
+.nutrition-tips {
+  padding: 20px;
+  margin-top: 20px;
+  background-color: rgba(34, 197, 94, 0.05);
+}
+
+.nutrition-tips h3 { margin: 0 0 12px 0; font-size: 1.1rem; }
+.nutrition-tips ul { margin: 0; padding-left: 20px; color: var(--text-secondary); }
+
+.form-error { color: var(--danger); margin-bottom: 16px; font-size: 0.95rem; }
+
+/* Input Grid Layouts */
+.stats-input-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.form-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.goal-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Form Select Group */
+.form-select-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-select-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-select-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Full Width Button */
+.full-width-button {
+  width: 100%;
+  padding: 14px 20px;
+  color: black !important;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+  border: none !important;
+  transition: all 300ms ease !important;
+  position: relative;
+}
+
+.full-width-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4) !important;
+}
+
+.full-width-button:active {
+  transform: translateY(0) !important;
+}
+
+/* Result Stat Cards */
+.result-stat-card {
+  padding: 20px;
+  text-align: center;
+}
+
+.result-stat-header {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.result-stat-value {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.result-stat-value-large {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.result-stat-value-calories {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.result-stat-subtext {
+  margin: 8px 0 0 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Weight Change Value (Loss/Gain) */
+.stat-value-loss {
+  color: var(--danger);
+}
+
+.stat-value-gain {
+  color: var(--success);
+}
+
+/* Macro Card Title */
+.macro-targets-title {
+  margin: 0 0 20px 0;
+}

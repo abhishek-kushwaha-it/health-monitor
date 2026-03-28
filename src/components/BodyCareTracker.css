@@ -1,0 +1,861 @@
+.body-care-tracker {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Category Tabs */
+.category-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+}
+
+.tab-btn:hover {
+  border-color: #8b5cf6;
+  background: #f5f3ff;
+}
+
+.tab-btn.active {
+  border-color: #8b5cf6;
+  background: #8b5cf6;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.tab-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.tab-label {
+  text-align: center;
+  word-break: break-word;
+  width: 100%;
+  font-size: 12px;
+}
+
+/* Category Header */
+.category-content {
+  margin-top: 24px;
+}
+
+.category-header {
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  color: white;
+  margin-bottom: 24px;
+}
+
+.header-content {
+  padding: 24px;
+}
+
+.category-title {
+  margin: 0 0 12px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.category-description {
+  margin: 0;
+  opacity: 0.95;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Content Sections */
+.content-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Routine Cards */
+.routine-card {
+  background: #f9fafb;
+}
+
+.routine-details {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.detail-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.detail-key {
+  flex: 0 0 120px;
+  font-weight: 700;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.detail-value {
+  flex: 1;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Tips Grid */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.tip-card {
+  padding: 0;
+}
+
+.tip-content {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  align-items: flex-start;
+}
+
+.tip-icon {
+  flex-shrink: 0;
+  font-size: 18px;
+  padding-top: 2px;
+}
+
+.tip-text {
+  margin: 0;
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* Rule Card */
+.rule-card {
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+  padding: 0;
+}
+
+.rule-content {
+  padding: 24px;
+  text-align: center;
+}
+
+.rule-title {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #92400e;
+}
+
+.rule-text {
+  margin: 0 0 16px 0;
+  color: #b45309;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.rule-highlight {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 16px;
+  border-radius: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+.rule-highlight p {
+  margin: 0;
+  font-weight: 600;
+  color: #92400e;
+  font-size: 14px;
+}
+
+/* Products Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.product-card {
+  padding: 16px;
+}
+
+.product-content {
+  text-align: center;
+}
+
+.product-name {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.product-use {
+  margin: 0;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Conditions Grid */
+.conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.condition-card {
+  padding: 16px;
+}
+
+.condition-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  color: #1f2937;
+}
+
+.condition-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Nutrition Card */
+.nutrition-card {
+  padding: 16px;
+}
+
+.nutrition-card p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Routine Sections */
+.routine-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.routine-section {
+  padding: 16px;
+}
+
+.routine-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 15px;
+  color: #1f2937;
+}
+
+.routine-item {
+  margin: 8px 0;
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* Schedule Grid */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.schedule-card {
+  padding: 12px;
+}
+
+.schedule-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.schedule-title {
+  display: block;
+  font-weight: 700;
+  color: #1f2937;
+  font-size: 13px;
+}
+
+.schedule-frequency {
+  display: block;
+  color: #666;
+  font-size: 12px;
+}
+
+/* Foods Card */
+.foods-card {
+  padding: 16px;
+}
+
+.food-item {
+  margin: 8px 0;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* Foods Grid */
+.foods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.food-card {
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.food-emoji {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.food-card h4 {
+  margin: 0;
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.food-card p {
+  margin: 0;
+  font-size: 11px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.frequency {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* Cautionary Card */
+.cautionary-card {
+  padding: 16px;
+  background: #fef2f2;
+}
+
+.cautionary-item {
+  margin: 8px 0;
+  color: #991b1b;
+  font-size: 13px;
+}
+
+/* Supplements Card */
+.supplements-card {
+  padding: 16px;
+}
+
+.supplements-card h4 {
+  margin: 0 0 12px 0;
+  font-size: 15px;
+  color: #1f2937;
+}
+
+.supplements-card p {
+  margin: 6px 0;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* Meal Overview */
+.meal-overview {
+  padding: 0;
+}
+
+.overview-content {
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.meal-item {
+  border-left: 4px solid #8b5cf6;
+  padding-left: 12px;
+}
+
+.meal-item h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.meal-item p {
+  margin: 0 0 6px 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.meal-time {
+  display: inline-block;
+  background: #e9d5ff;
+  color: #6b21a8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Nutrition Grid */
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.nutrition-grid .nutrition-item {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.nutrient-icon {
+  font-size: 24px;
+}
+
+.nutrition-grid .nutrition-item p {
+  margin: 0;
+  font-size: 12px;
+  color: #4b5563;
+  line-height: 1.4;
+}
+
+/* Summary Card */
+.summary-card {
+  background: linear-gradient(135deg, #dbeafe 0%, #cffafe 100%);
+  margin-top: 32px;
+}
+
+.summary-content {
+  padding: 20px;
+}
+
+.summary-content h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: #0c4a6e;
+  font-weight: 700;
+}
+
+.summary-list {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.summary-list li {
+  margin: 8px 0;
+  padding-left: 20px;
+  position: relative;
+  color: #0c4a6e;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.summary-list li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: #0284c7;
+}
+
+/* Nutrients Grid */
+.nutrients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.nutrient-card {
+  padding: 14px;
+  text-align: center;
+}
+
+.nutrient-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.nutrient-card p {
+  margin: 0;
+  font-size: 12px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* RDA Scale Grid */
+.rda-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.rda-card {
+  padding: 16px;
+}
+
+.rda-level {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #1f2937;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.rda-card p {
+  margin: 0;
+  font-size: 12px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* Hair Info */
+.info-card {
+  padding: 20px;
+}
+
+.info-card p {
+  margin: 12px 0;
+  color: white;
+  font-size: 14px;
+}
+
+.growth-info {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.growth-info p {
+  margin: 0;
+}
+
+/* Treatment Cards */
+.treatments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.treatment-card {
+  padding: 16px;
+}
+
+.treatment-card h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.treatment-card p {
+  margin: 6px 0;
+  font-size: 12px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.treatment-note {
+  color: #059669;
+  margin-top: 8px !important;
+  padding-top: 8px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Meal Schedule */
+.meal-schedule {
+  display: grid;
+  gap: 16px;
+}
+
+.meal-detail-card {
+  padding: 16px;
+}
+
+.meal-detail-card h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.meal-nutrition {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.meal-nutrition .nutrition-item {
+  background: #f3f4f6;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.meal-items {
+  margin: 12px 0;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.meal-items li {
+  margin: 4px 0;
+  font-size: 12px;
+  color: #4b5563;
+  padding-left: 16px;
+  position: relative;
+}
+
+.meal-items li:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: #8b5cf6;
+}
+
+.meal-benefit {
+  margin: 12px 0 0 0 !important;
+  padding: 8px 0;
+  border-top: 1px solid #e5e7eb;
+  font-size: 12px !important;
+  color: #059669;
+}
+
+.meal-meta {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.meal-calories {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Budget & Shopping */
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.budget-card {
+  padding: 16px;
+}
+
+.budget-card h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.requirements-list {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.requirements-list li {
+  margin: 6px 0;
+  font-size: 12px;
+  color: #4b5563;
+  padding-left: 16px;
+  position: relative;
+}
+
+.requirements-list li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.cost-label {
+  margin: 8px 0 0 0 !important;
+  font-weight: 700;
+  color: #059669 !important;
+  font-size: 13px !important;
+}
+
+/* Totals Card */
+.totals-card {
+  padding: 20px;
+  background: linear-gradient(135deg, #dcfce7 0%, #cffafe 100%);
+}
+
+.totals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.total-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.total-label {
+  font-size: 12px;
+  color: #0c4a6e;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.total-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #059669;
+}
+
+/* Warning Note */
+.warning-note {
+  margin: 12px 0 0 0 !important;
+  padding: 8px 0;
+  border-top: 1px solid #e5e7eb;
+  color: #991b1b !important;
+  font-weight: 600;
+  font-size: 13px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .category-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .conditions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .routine-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .nutrients-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .treatments-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .budget-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .totals-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category-title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .foods-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nutrients-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .treatments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rda-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .totals-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .meal-nutrition {
+    flex-direction: column;
+  }
+
+  .tab-label {
+    font-size: 11px;
+  }
+
+  .category-title {
+    font-size: 18px;
+  }
+}
