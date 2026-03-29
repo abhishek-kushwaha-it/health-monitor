@@ -2,7 +2,6 @@
 
 A comprehensive health monitoring and wellness management application designed to help users track their fitness journey, plan nutrition, and maintain body care. Built with modern web technologies for a fast and responsive user experience.
 
-
 ## ✨ Features
 
 - **User Authentication** - Secure sign-up and login system with profile management
@@ -13,7 +12,6 @@ A comprehensive health monitoring and wellness management application designed t
 - **Responsive Design** - Mobile-first responsive design that works seamlessly on all devices
 - **Daily Wellness Tips** - Curated daily health tips based on the day of the week
 - **Data Persistence** - Local storage for user data and preferences
-
 
 ## 🚀 Quick Start
 
@@ -62,7 +60,6 @@ Output will be in the `dist/` directory.
 npm run preview
 ```
 
-
 ## 📁 Project Structure
 
 ```
@@ -104,7 +101,6 @@ health-monitor/
 └── README.md                        # This file
 ```
 
-
 ## 📱 Usage Guide
 
 ### Authentication
@@ -139,14 +135,12 @@ health-monitor/
 - Meal planning and nutrition guidance
 - Budget and shopping list recommendations
 
-
 ## 🔐 Data Management
 
 - **Local Storage**: User data is stored in browser's localStorage for persistence
 - **Session Storage**: Profile avatars are stored in sessionStorage
 - **No Backend**: Currently uses client-side data storage
 - **Future Ready**: Architecture supports easy migration to backend API
-
 
 ## 🌟 Key Algorithms
 
@@ -161,7 +155,6 @@ Based on activity level multiplier applied to BMR
 - Protein: 1.8-2.2g per lb (varies by goal)
 - Carbs: 45% of total calories
 - Fats: 25% of total calories
-
 
 ## 📝 License
 
