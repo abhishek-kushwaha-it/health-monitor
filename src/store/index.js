@@ -1,7 +1,6 @@
 import { createStore } from "redux";
 
 const STORAGE_KEY = 'healthPlannerData';
-const AVATARS_KEY = 'userAvatars';
 
 // Redux Actions (only used actions)
 export const REDUX_ACTIONS = {
@@ -37,14 +36,6 @@ const saveAvatarToSessionStorage = (userId, avatarData) => {
     } catch (e) {
       console.warn('Failed to save avatar to session storage:', e);
     }
-  }
-};
-
-const getAvatarFromSessionStorage = (userId) => {
-  try {
-    return sessionStorage.getItem(`avatar_${userId}`);
-  } catch (e) {
-    return null;
   }
 };
 

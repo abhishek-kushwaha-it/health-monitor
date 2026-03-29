@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { REDUX_ACTIONS } from '../store';
@@ -13,15 +13,6 @@ const MainNavigation = () => {
     const currentUser = users.find(u => u.id === currentUserId);
     
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [avatarImage, setAvatarImage] = useState(null);
-
-    // Get avatar from sessionStorage
-    useEffect(() => {
-        if (currentUser?.hasAvatar) {
-            const savedAvatar = sessionStorage.getItem(`avatar_${currentUser.id}`);
-            setAvatarImage(savedAvatar);
-        }
-    }, [currentUser]);
 
     const handleLogout = () => {
         dispatch({ type: REDUX_ACTIONS.LOGOUT });

@@ -3,28 +3,17 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "A comprehensive health monitoring and wellness management application",
-  "author": "Your Name",
+  "description": "A comprehensive health monitoring and wellness management application with exercise tracking, nutrition planning, and body care guidance",
+  "author": "Abhishek Kushwaha",
   "license": "MIT",
-  "keywords": [
-    "health",
-    "wellness",
-    "fitness",
-    "medical",
-    "monitoring",
-    "healthcare"
-  ],
-  "homepage": "./",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "format": "prettier --write \"src/**/*.{js,jsx,css}\"",
-    "check": "npm run lint && npm run build"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.2",
@@ -39,7 +28,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "prettier": "^3.1.1",
+    "terser": "^5.46.1",
     "vite": "^5.2.0"
   }
 }
