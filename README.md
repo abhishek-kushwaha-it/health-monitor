@@ -2,6 +2,7 @@
 
 A comprehensive health monitoring and wellness management application designed to help users track their fitness journey, plan nutrition, and maintain body care. Built with modern web technologies for a fast and responsive user experience.
 
+
 ## ✨ Features
 
 - **User Authentication** - Secure sign-up and login system with profile management
@@ -12,6 +13,7 @@ A comprehensive health monitoring and wellness management application designed t
 - **Responsive Design** - Mobile-first responsive design that works seamlessly on all devices
 - **Daily Wellness Tips** - Curated daily health tips based on the day of the week
 - **Data Persistence** - Local storage for user data and preferences
+
 
 ## 🚀 Quick Start
 
@@ -60,6 +62,7 @@ Output will be in the `dist/` directory.
 npm run preview
 ```
 
+
 ## 📁 Project Structure
 
 ```
@@ -100,6 +103,7 @@ health-monitor/
 ├── package.json                     # Project dependencies
 └── README.md                        # This file
 ```
+
 
 ## 📱 Usage Guide
 
