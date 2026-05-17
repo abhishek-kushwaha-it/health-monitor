@@ -1,22 +1,30 @@
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import "./Dashboard.css";
-import { Section, Grid, Card, IntroSection } from "./UI";
-import { getTodaysTip } from "../data/dailyTips";
+import { FC } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import './Dashboard.css';
+import { Section, Grid, Card, IntroSection } from './UI';
+import { getTodaysTip } from '../data/dailyTips.ts';
+import { RootState } from '../store/index.ts';
 
-const Dashboard = () => {
-    const exercises = useSelector(state => state?.exercises?.logs || []);
+interface Exercise {
+    exerciseName: string;
+    calories: string | number;
+    date: string;
+}
+
+const Dashboard: FC = () => {
+    const exercises = useSelector((state: RootState) => state?.exercises?.logs || []) as Exercise[];
     const todaysTip = getTodaysTip();
-    const todayDate = new Date().toLocaleDateString('en-US', { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+    const todayDate = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
     });
 
     return (
         <div className="dashboard">
-            <IntroSection 
+            <IntroSection
                 title="Welcome to Health Monitor ❤️"
                 subtitle="Your personal health and wellness companion"
                 variant="gradient"
@@ -61,7 +69,7 @@ const Dashboard = () => {
                 <Card className="tip-card" variant="outline">
                     <div className="tip-content">
                         {todaysTip?.icon && <span className="tip-icon">{todaysTip.icon}</span>}
-                        <p>{todaysTip?.description || "Stay hydrated and active!"}</p>
+                        <p>{todaysTip?.description || 'Stay hydrated and active!'}</p>
                     </div>
                 </Card>
             </Section>
@@ -71,7 +79,7 @@ const Dashboard = () => {
                     <Grid columns={2} gap="16px">
                         <Card variant="elevated">
                             <p><strong>Total Exercises:</strong> {exercises.length}</p>
-                            <p><strong>Total Calories:</strong> {exercises.reduce((sum, ex) => sum + (parseInt(ex?.calories) || 0), 0)} kcal</p>
+                            <p><strong>Total Calories:</strong> {exercises.reduce((sum, ex) => sum + (parseInt(String(ex?.calories)) || 0), 0)} kcal</p>
                         </Card>
                         <Card variant="elevated">
                             <p><strong>Recent Activity:</strong> {exercises[exercises.length - 1]?.exerciseName || 'N/A'}</p>

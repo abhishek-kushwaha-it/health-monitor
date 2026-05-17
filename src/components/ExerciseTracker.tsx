@@ -1,11 +1,30 @@
-import { useState, useMemo } from 'react';
+import { FC, useState, useMemo } from 'react';
 import { Section, IntroSection, Card, Button } from './UI';
-import { getTodaysPlan, exercisePlans } from '../data/exercisePlans';
+import { getTodaysPlan, exercisePlans } from '../data/exercisePlans.ts';
 import './ExerciseTracker.css';
 
-// Get category icon and color for exercise
-const getCategoryIcon = (category) => {
-  const icons = {
+interface CategoryIcon {
+  emoji: string;
+  color: string;
+  bgColor: string;
+}
+
+interface MotivationData {
+  emoji: string;
+  title: string;
+  message: string;
+}
+
+interface Analytics {
+  totalExercises: number;
+  completed: number;
+  totalCalories: number;
+  burnedCalories: number;
+  completionRate: number;
+}
+
+const getCategoryIcon = (category: string): CategoryIcon => {
+  const icons: Record<string, CategoryIcon> = {
     strength: { emoji: '💪', color: '#ef4444', bgColor: '#fecaca' },
     cardio: { emoji: '🏃', color: '#f59e0b', bgColor: '#fcd34d' },
     flexibility: { emoji: '🧘', color: '#8b5cf6', bgColor: '#e9d5ff' },
@@ -15,8 +34,7 @@ const getCategoryIcon = (category) => {
   return icons[category] || { emoji: '⭐', color: '#3b82f6', bgColor: '#bfdbfe' };
 };
 
-// Render motivation message based on completion rate
-const MotivationMessage = ({ completionRate, remaining }) => {
+const MotivationMessage = (completionRate: number, remaining: number): MotivationData => {
   if (completionRate === 100) return { emoji: '🎉', title: 'Perfect! You completed all exercises!', message: 'Outstanding effort today! Keep this momentum going! 💪' };
   if (completionRate >= 75) return { emoji: '💪', title: 'Almost there! You\'re doing great!', message: `Complete ${remaining} more exercises to finish strong!` };
   if (completionRate >= 50) return { emoji: '🔥', title: 'Great progress! Keep it up!', message: `You're halfway done! ${remaining} exercises remaining.` };
@@ -24,9 +42,9 @@ const MotivationMessage = ({ completionRate, remaining }) => {
   return { emoji: '💪', title: 'Ready to get started?', message: 'Check off exercises as you complete them. Let\'s crush this workout!' };
 };
 
-const ExerciseTracker = () => {
-  const [selectedDifficulty, setSelectedDifficulty] = useState('beginner');
-  const [completedExercises, setCompletedExercises] = useState({});
+const ExerciseTracker: FC = () => {
+  const [selectedDifficulty, setSelectedDifficulty] = useState<string>('beginner');
+  const [completedExercises, setCompletedExercises] = useState<Record<string, boolean>>({});
 
   // Get today's date info
   const today = new Date();
@@ -39,9 +57,8 @@ const ExerciseTracker = () => {
     return getTodaysPlan(selectedDifficulty);
   }, [selectedDifficulty]);
 
-  // Calculate analytics
-  const analytics = useMemo(() => {
-    if (!todaysPlan) return { totalExercises: 0, completed: 0, totalCalories: 0, burnedCalories: 0 };
+  const analytics: Analytics = useMemo(() => {
+    if (!todaysPlan) return { totalExercises: 0, completed: 0, totalCalories: 0, burnedCalories: 0, completionRate: 0 };
 
     const totalExercises = todaysPlan.exercises.length;
     const completedCount = Object.values(completedExercises).filter(v => v).length;
@@ -61,7 +78,7 @@ const ExerciseTracker = () => {
     };
   }, [todaysPlan, completedExercises]);
 
-  const handleToggleExercise = (exerciseName) => {
+  const handleToggleExercise = (exerciseName: string): void => {
     const exerciseId = `${todaysPlan.day}-${exerciseName}`;
     setCompletedExercises(prev => ({
       ...prev,
@@ -69,12 +86,12 @@ const ExerciseTracker = () => {
     }));
   };
 
-  const handleDifficultyChange = (difficulty) => {
+  const handleDifficultyChange = (difficulty: string): void => {
     setSelectedDifficulty(difficulty);
-    setCompletedExercises({}); // Clear completed exercises when changing difficulty
+    setCompletedExercises({});
   };
 
-  const isRestDay = todaysPlan?.exercises.some(ex => ex.category === 'rest');
+  const isRestDay = todaysPlan?.exercises.some((ex: any) => ex.category === 'rest');
 
   return (
     <div className="exercise-tracker">
@@ -237,7 +254,7 @@ const ExerciseTracker = () => {
 
               {/* Motivation Message */}
               {analytics.totalExercises > 0 && (() => {
-                const motivation = MotivationMessage(analytics.completionRate, analytics.totalExercises - analytics.completed, analytics.totalExercises);
+                const motivation = MotivationMessage(analytics.completionRate, analytics.totalExercises - analytics.completed);
                 return (
                   <Card variant="outline" className="motivation-card">
                     <div className="motivation-content">

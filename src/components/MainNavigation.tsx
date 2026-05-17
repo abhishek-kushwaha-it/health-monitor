@@ -1,54 +1,54 @@
-import { useState, useRef } from 'react';
+import { FC, useState, useRef, ChangeEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { REDUX_ACTIONS } from '../store';
+import { REDUX_ACTIONS } from '../store/index.ts';
+import { RootState, User } from '../store/index.ts';
 import './MainNavigation.css';
 
-const MainNavigation = () => {
+const MainNavigation: FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const fileInputRef = useRef(null);
-    const currentUserId = useSelector(state => state?.auth?.currentUser);
-    const users = useSelector(state => state?.auth?.users || []);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const currentUserId = useSelector((state: RootState) => state?.auth?.currentUser);
+    const users = useSelector((state: RootState) => state?.auth?.users || []) as User[];
     const currentUser = users.find(u => u.id === currentUserId);
-    
+    const [avatarImage, setAvatarImage] = useState<string>('');
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    const handleLogout = () => {
+    const handleLogout = (): void => {
         dispatch({ type: REDUX_ACTIONS.LOGOUT });
         setDropdownOpen(false);
         navigate('/auth');
     };
 
-    const handleChangeAvatar = () => {
+    const handleChangeAvatar = (): void => {
         fileInputRef.current?.click();
     };
 
-    const handleAvatarImageChange = (e) => {
-        const file = e.target.files[0];
+    const handleAvatarImageChange = (e: ChangeEvent<HTMLInputElement>): void => {
+        const file = e.target.files?.[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
+                const result = reader.result as string;
                 dispatch({
                     type: REDUX_ACTIONS.UPDATE_USER_AVATAR,
-                    payload: reader.result
+                    payload: result
                 });
-                setAvatarImage(reader.result);
+                setAvatarImage(result);
             };
             reader.readAsDataURL(file);
         }
         setDropdownOpen(false);
     };
 
-    // Generate avatar background color based on username
-    const getAvatarColor = (username) => {
+    const getAvatarColor = (username: string | undefined): string => {
         const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#06b6d4'];
         const charCode = username?.charCodeAt(0) || 0;
         return colors[charCode % colors.length];
     };
 
-    // Get avatar initials
-    const getInitials = (username) => {
+    const getInitials = (username: string | undefined): string => {
         return username
             ?.split(' ')
             .map(word => word[0])

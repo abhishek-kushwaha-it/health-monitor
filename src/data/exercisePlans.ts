@@ -1,6 +1,23 @@
 // 31-Day Exercise Plans with 4 Difficulty Levels
 
-export const exercisePlans = {
+interface Exercise {
+  name: string;
+  calories: number;
+  duration?: string;
+  category?: string;
+}
+
+interface DayPlan {
+  day: number;
+  name: string;
+  exercises: Exercise[];
+}
+
+interface ExercisePlan {
+  [key: string]: DayPlan[];
+}
+
+export const exercisePlans: ExercisePlan = {
   beginner: [
     { day: 1, name: 'Start Easy', exercises: [{ name: 'Walking 20 min', calories: 100 }, { name: 'Stretching 5 min', calories: 30 }] },
     { day: 2, name: 'Upper Body', exercises: [{ name: 'Push-ups 3x8', calories: 90 }, { name: 'Dumbbell Press 3x8', calories: 80 }] },
@@ -135,12 +152,12 @@ export const exercisePlans = {
   ]
 };
 
-export const getDayFromPlan = (difficulty, dayNumber) => {
+export const getDayFromPlan = (difficulty: string, dayNumber: number): DayPlan | undefined => {
   const plan = exercisePlans[difficulty] || exercisePlans.beginner;
   return plan.find(p => p.day === dayNumber);
 };
 
-export const getTodaysPlan = (difficulty) => {
+export const getTodaysPlan = (difficulty: string): DayPlan | undefined => {
   const today = new Date();
   const dayOfMonth = today.getDate();
   // Cap at 31 days (in case of months with more days, use day 31)

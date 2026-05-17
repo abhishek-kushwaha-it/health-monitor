@@ -1,6 +1,6 @@
 # 💚 Health Monitor
 
-A comprehensive health monitoring and wellness management application designed to help users track their fitness journey, plan nutrition, and maintain body care. Built with modern web technologies for a fast and responsive user experience.
+A comprehensive health monitoring and wellness management application designed to help users track their fitness journey, plan nutrition, and maintain body care. Built with **TypeScript, React, and Redux** for a type-safe, fast, and responsive user experience.
 
 ## ✨ Features
 
@@ -12,6 +12,8 @@ A comprehensive health monitoring and wellness management application designed t
 - **Responsive Design** - Mobile-first responsive design that works seamlessly on all devices
 - **Daily Wellness Tips** - Curated daily health tips based on the day of the week
 - **Data Persistence** - Local storage for user data and preferences
+- **Type Safety** - Full TypeScript support with strict type checking
+- **Modern Tooling** - Vite for fast development, React Router for navigation
 
 ## 🚀 Quick Start
 
@@ -19,6 +21,7 @@ A comprehensive health monitoring and wellness management application designed t
 
 - Node.js (v16 or higher)
 - npm (v7 or higher) or yarn
+- TypeScript knowledge (basic understanding of types)
 
 ### Installation
 
@@ -40,6 +43,11 @@ A comprehensive health monitoring and wellness management application designed t
 npm run dev
 ```
 The application will be available at `http://localhost:5173`
+
+**Type checking:**
+```bash
+tsc --noEmit
+```
 
 **Lint code:**
 ```bash
@@ -66,40 +74,61 @@ npm run preview
 health-monitor/
 ├── src/
 │   ├── components/
-│   │   ├── Auth.jsx                 # Authentication (login/signup)
-│   │   ├── Dashboard.jsx            # Main dashboard overview
-│   │   ├── ExerciseTracker.jsx      # Exercise tracking and analytics
-│   │   ├── NutritionPlanner.jsx     # Nutrition planning and macro calculation
-│   │   ├── BodyCareTracker.jsx      # Body care and health guidelines
-│   │   ├── AppLayout.jsx            # Main layout wrapper
-│   │   ├── MainNavigation.jsx       # Navigation header
-│   │   ├── ErrorPage.jsx            # Error page component
+│   │   ├── Auth.tsx                 # Authentication (login/signup)
+│   │   ├── Dashboard.tsx            # Main dashboard overview
+│   │   ├── ExerciseTracker.tsx      # Exercise tracking and analytics
+│   │   ├── NutritionPlanner.tsx     # Nutrition planning and macro calculation
+│   │   ├── BodyCareTracker.tsx      # Body care and health guidelines
+│   │   ├── AppLayout.tsx            # Main layout wrapper
+│   │   ├── MainNavigation.tsx       # Navigation header
+│   │   ├── ErrorPage.tsx            # Error page component
 │   │   ├── UI/                      # Reusable UI components
-│   │   │   ├── Button.jsx
-│   │   │   ├── Card.jsx
-│   │   │   ├── Input.jsx
-│   │   │   ├── Grid.jsx
-│   │   │   ├── Section.jsx
-│   │   │   ├── IntroSection.jsx
-│   │   │   └── index.js
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   ├── Input.tsx
+│   │   │   ├── Grid.tsx
+│   │   │   ├── Section.tsx
+│   │   │   ├── IntroSection.tsx
+│   │   │   └── index.ts
 │   │   └── *.css                    # Component styles
 │   ├── data/
-│   │   ├── dailyTips.js            # Daily wellness tips data
-│   │   ├── exercisePlans.js        # 31-day exercise plans
-│   │   └── bodyCareData.js         # Body care guidelines
+│   │   ├── dailyTips.ts            # Daily wellness tips data with typed interfaces
+│   │   ├── exercisePlans.ts        # 31-day exercise plans with type definitions
+│   │   └── bodyCareData.ts         # Body care guidelines with typed data
 │   ├── store/
-│   │   └── index.js                 # Redux store configuration
-│   ├── App.jsx                      # Main app component with routing
+│   │   └── index.ts                 # Redux store configuration with RootState type
+│   ├── App.tsx                      # Main app component with typed routing
 │   ├── App.css
-│   ├── main.jsx                     # Application entry point
+│   ├── main.tsx                     # Application entry point
 │   └── main.css
 ├── public/
 │   └── img/                         # Static images
 ├── index.html                       # HTML template
-├── vite.config.js                   # Vite configuration
+├── vite.config.ts                   # Vite configuration
+├── tsconfig.json                    # TypeScript configuration
+├── tsconfig.node.json               # TypeScript config for Node files
 ├── package.json                     # Project dependencies
 └── README.md                        # This file
 ```
+
+## �️ Tech Stack
+
+### Frontend
+- **React 18** - UI library with hooks
+- **TypeScript** - Type-safe JavaScript with strict type checking
+- **Vite** - Lightning-fast build tool and dev server
+- **React Router** - Client-side routing
+- **Redux** - State management
+- **React-Redux** - Redux bindings for React
+
+### Styling
+- **CSS3** - Modern styling with flexbox and grid
+- **Responsive Design** - Mobile-first approach
+
+### Build & Tooling
+- **TypeScript Compiler** - Type checking and compilation
+- **ESLint** - Code linting with TypeScript support
+- **Terser** - JavaScript minification for production
 
 ## 📱 Usage Guide
 
@@ -142,6 +171,31 @@ health-monitor/
 - **No Backend**: Currently uses client-side data storage
 - **Future Ready**: Architecture supports easy migration to backend API
 
+## 📊 Type Safety
+
+This project uses **TypeScript strict mode** for maximum type safety:
+
+### Type Definitions
+- **Interfaces** for Redux state (`RootState`, `AuthState`)
+- **Typed Components** - All React components are typed with `FC` (FunctionComponent)
+- **Type-Safe Props** - Component props are fully typed
+- **Type-Safe State** - Redux actions and state are strongly typed
+
+### Example: Redux Typed State
+```typescript
+interface RootState {
+  auth: AuthState;
+  nutrition: Record<string, unknown>;
+  exercises?: {
+    logs: Array<{
+      exerciseName: string;
+      calories: string | number;
+      date: string;
+    }>;
+  };
+}
+```
+
 ## 🌟 Key Algorithms
 
 ### BMR Calculation (Mifflin-St Jeor Formula)
@@ -156,6 +210,12 @@ Based on activity level multiplier applied to BMR
 - Carbs: 45% of total calories
 - Fats: 25% of total calories
 
-## 📝 License
+##  License
 
 MIT License - Feel free to use this project for personal or commercial purposes.
+
+---
+
+**Author**: Abhishek Kushwaha  
+**Version**: 1.0.0  
+**Status**: Active Development

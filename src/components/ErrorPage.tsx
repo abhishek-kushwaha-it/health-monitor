@@ -1,9 +1,16 @@
+import { FC } from 'react';
 import { useRouteError, useNavigate } from 'react-router-dom';
 import './ErrorPage.css';
 import { Button } from './UI';
 
-const ErrorPage = () => {
-    const error = useRouteError();
+interface RouteError {
+    message?: string;
+    status?: number | string;
+    statusText?: string;
+}
+
+const ErrorPage: FC = () => {
+    const error = useRouteError() as RouteError;
     const navigate = useNavigate();
 
     const errorMessage = error?.message || 'An unexpected error occurred';
@@ -19,7 +26,7 @@ const ErrorPage = () => {
                 <div className="error-code">❌ {errorStatus}</div>
                 <h1 className="error-title">{errorStatusText}</h1>
                 <p className="error-message">{errorMessage}</p>
-                
+
                 <div className="error-details">
                     {errorStatus === '404' && (
                         <p className="error-hint">The page you&apos;re looking for doesn&apos;t exist. It might have been moved or deleted.</p>

@@ -1,7 +1,17 @@
-import PropTypes from 'prop-types';
+import { FC } from 'react';
 import './IntroSection.css';
 
-const IntroSection = ({ title, subtitle, variant = 'default' }) => {
+interface IntroSectionProps {
+  title: string;
+  subtitle?: string;
+  variant?: 'default' | 'gradient' | 'outline';
+}
+
+const IntroSection: FC<IntroSectionProps> = ({
+  title,
+  subtitle,
+  variant = 'default'
+}) => {
   return (
     <div className={`intro-section intro-section-${variant}`}>
       <div className="intro-content">
@@ -10,12 +20,6 @@ const IntroSection = ({ title, subtitle, variant = 'default' }) => {
       </div>
     </div>
   );
-};
-
-IntroSection.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
-  variant: PropTypes.oneOf(['default', 'gradient', 'outline'])
 };
 
 export default IntroSection;

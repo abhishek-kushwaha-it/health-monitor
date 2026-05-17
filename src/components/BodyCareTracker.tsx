@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { FC, useState, ReactNode } from 'react';
 import { Section, IntroSection, Card } from './UI';
-import { bodyCareGuidelines } from '../data/bodyCareData';
+import { bodyCareGuidelines } from '../data/bodyCareData.ts';
 import './BodyCareTracker.css';
 
-const BodyCareTracker = () => {
-  const [selectedCategory, setSelectedCategory] = useState('skin');
+const BodyCareTracker: FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('skin');
   const categories = Object.keys(bodyCareGuidelines);
   const currentGuide = bodyCareGuidelines[selectedCategory];
 

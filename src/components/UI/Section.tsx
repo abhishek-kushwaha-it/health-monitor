@@ -1,7 +1,19 @@
-import PropTypes from "prop-types";
-import "./Section.css";
+import { FC, ReactNode } from 'react';
+import './Section.css';
 
-const Section = ({ title, subtitle = null, children, className = "" }) => {
+interface SectionProps {
+    title?: string;
+    subtitle?: string | null;
+    children: ReactNode;
+    className?: string;
+}
+
+const Section: FC<SectionProps> = ({
+    title,
+    subtitle = null,
+    children,
+    className = ''
+}) => {
     return (
         <section className={`section ${className}`}>
             {title && (
@@ -15,13 +27,6 @@ const Section = ({ title, subtitle = null, children, className = "" }) => {
             </div>
         </section>
     );
-};
-
-Section.propTypes = {
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
 };
 
 export default Section;

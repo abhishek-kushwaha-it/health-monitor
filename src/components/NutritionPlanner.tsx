@@ -1,32 +1,40 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
-import "./NutritionPlanner.css";
-import { Section, IntroSection, Card, Input, Button, Grid } from "./UI";
-import { REDUX_ACTIONS } from "../store/index";
+import { FC, useState, ReactNode } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import './NutritionPlanner.css';
+import { Section, IntroSection, Card, Input, Button, Grid } from './UI';
+import { REDUX_ACTIONS } from '../store/index.ts';
+import { RootState } from '../store/index.ts';
 
 // Mifflin-St Jeor BMR calculation
-const calculateBMR = (weight, height, age, gender) =>
+const calculateBMR = (weight: number, height: number, age: number, gender: string): number =>
   gender === 'M'
     ? 10 * weight + 6.25 * height - 5 * age + 5
     : 10 * weight + 6.25 * height - 5 * age - 161;
 
 // TDEE calculation based on activity level
-const calculateTDEE = (bmr, activityLevel) => {
-  const activities = { sedentary: 1.2, light: 1.375, moderate: 1.55, active: 1.725, veryactive: 1.9 };
+const calculateTDEE = (bmr: number, activityLevel: string): number => {
+  const activities: Record<string, number> = { sedentary: 1.2, light: 1.375, moderate: 1.55, active: 1.725, veryactive: 1.9 };
   return bmr * (activities[activityLevel] || 1.55);
 };
 
 // Validate nutrition form inputs
-const validateNutritionForm = (weight, height, age) => {
-  if (!weight || !height || !age) return { valid: false, message: "Please fill in all fields" };
-  if (weight <= 0 || height <= 0 || age <= 0) return { valid: false, message: "Values must be positive numbers" };
-  if (age < 10 || age > 120) return { valid: false, message: "Age should be between 10 and 120" };
-  return { valid: true, message: "" };
+const validateNutritionForm = (weight: string | number, height: string | number, age: string | number): { valid: boolean; message: string } => {
+  if (!weight || !height || !age) return { valid: false, message: 'Please fill in all fields' };
+  if (weight <= 0 || height <= 0 || age <= 0) return { valid: false, message: 'Values must be positive numbers' };
+  if (age < 10 || age > 120) return { valid: false, message: 'Age should be between 10 and 120' };
+  return { valid: true, message: '' };
 };
 
 // Render macro card with label, value, and percentage
-const MacroCard = ({ emoji, label, value, percentage, type }) => (
+interface MacroCardProps {
+  emoji: string;
+  label: string;
+  value: number;
+  percentage: number;
+  type: 'protein' | 'carbs' | 'fats';
+}
+
+const MacroCard: FC<MacroCardProps> = ({ emoji, label, value, percentage, type }) => (
   <div className={`macro-card macro-${type}`}>
     <p>{emoji} {label}</p>
     <p>{value}g</p>
@@ -34,17 +42,9 @@ const MacroCard = ({ emoji, label, value, percentage, type }) => (
   </div>
 );
 
-MacroCard.propTypes = {
-  emoji: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
-  percentage: PropTypes.number.isRequired,
-  type: PropTypes.oneOf(['protein', 'carbs', 'fats']).isRequired
-};
-
-const NutritionPlanner = () => {
+const NutritionPlanner: FC = () => {
     const dispatch = useDispatch();
-    const nutrition = useSelector(state => state?.nutrition || {});
+    const nutrition = useSelector((state: RootState) => state.nutrition);
 
     // Step 1: Basic Info
     const [currentStats, setCurrentStats] = useState(nutrition?.currentStats || {

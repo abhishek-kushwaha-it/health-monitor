@@ -1,4 +1,9 @@
-export const bodyCareGuidelines = {
+type BodyCareGuidelines = Record<string, {
+  title: string;
+  content: Record<string, any>;
+}>;
+
+export const bodyCareGuidelines: BodyCareGuidelines = {
     skin: {
         title: '🧴 Skin Care',
         content: {

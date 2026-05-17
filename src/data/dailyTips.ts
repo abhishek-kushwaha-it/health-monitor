@@ -8,7 +8,17 @@
  * and replace this static data structure with API calls
  */
 
-export const dailyTips = [
+interface DailyTip {
+  id: number;
+  day: number;
+  title: string;
+  description: string;
+  icon: string;
+  category: string;
+  color: string;
+}
+
+export const dailyTips: DailyTip[] = [
   {
     id: 1,
     day: 0, // Sunday
@@ -78,7 +88,7 @@ export const dailyTips = [
  * Get today's tip based on current day
  * Returns the tip object for the current day of the week
  */
-export const getTodaysTip = () => {
+export const getTodaysTip = (): DailyTip | undefined => {
   const today = new Date().getDay(); // 0 = Sunday, 6 = Saturday
   return dailyTips.find(tip => tip.day === today);
 };

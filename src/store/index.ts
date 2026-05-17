@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { createStore, Reducer, AnyAction } from "redux";
 
 const STORAGE_KEY = 'healthPlannerData';
 
@@ -9,14 +9,52 @@ export const REDUX_ACTIONS = {
   LOGOUT: 'LOGOUT',
   UPDATE_NUTRITION: 'UPDATE_NUTRITION',
   UPDATE_USER_AVATAR: 'UPDATE_USER_AVATAR'
-};
+} as const;
 
-const INITIAL_STATE = {
+interface User {
+  id: string;
+  email: string;
+  password: string;
+  fullName: string;
+  username: string;
+  dateOfBirth: string;
+  avatar: null;
+  createdAt: string;
+  hasAvatar?: boolean;
+  data: {
+    nutrition: Record<string, unknown>;
+    exercisePlan: {
+      selectedPlan: string;
+      currentDay: number;
+      completedExercises: Record<string, unknown>;
+    };
+  };
+}
+
+interface AuthState {
+  isLoggedIn: boolean;
+  currentUser: string | null;
+  users: User[];
+}
+
+interface RootState {
+  auth: AuthState;
+  nutrition: Record<string, unknown>;
+  exercises?: {
+    logs: Array<{
+      exerciseName: string;
+      calories: string | number;
+      date: string;
+    }>;
+  };
+}
+
+const INITIAL_STATE: RootState = {
   auth: { isLoggedIn: false, currentUser: null, users: [] },
   nutrition: {}
 };
 
-const loadInitialState = () => {
+const loadInitialState = (): RootState => {
   const stored = localStorage.getItem(STORAGE_KEY);
   if (stored) {
     try {
@@ -29,7 +67,7 @@ const loadInitialState = () => {
 };
 
 // Helper to manage avatar storage separately
-const saveAvatarToSessionStorage = (userId, avatarData) => {
+const saveAvatarToSessionStorage = (userId: string, avatarData: string): void => {
   if (avatarData) {
     try {
       sessionStorage.setItem(`avatar_${userId}`, avatarData);
@@ -39,7 +77,7 @@ const saveAvatarToSessionStorage = (userId, avatarData) => {
   }
 };
 
-const dietPlannerReducer = (state = loadInitialState(), action) => {
+const dietPlannerReducer: Reducer<RootState, AnyAction> = (state = loadInitialState(), action): RootState => {
   const newState = { ...state };
   const { currentUser, users } = newState.auth;
   const userIdx = currentUser ? users.findIndex(u => u.id === currentUser) : -1;
@@ -128,3 +166,4 @@ const dietPlannerReducer = (state = loadInitialState(), action) => {
 
 const store = createStore(dietPlannerReducer);
 export default store;
+export type { RootState, User, AuthState };
